@@ -1,2 +1,66 @@
 # APB-UART-Receiver
 Design of an APB UART Receiver supporting variable data sizes (5, 7, or 8 bits) and programmable bit periods
+
+## Overview 
+The APB UART receiver integrates an APB Subordinate module with a UART receiver block to process serial data, configure registers, and report status to the master. It supports data sizes of 5, 7, or 8 bit and programmable bit periods. 
+
+## Repo Structure 
+
+The project includes the following SystemVerilog modules:
+
+  - apb_subordinate.sv: Implements the APB interface, managing register reads/writes for configuration (bit period, data size) and status (data ready, errors).
+  
+  - apb_uart_rx.sv: Top-level module connecting the APB subordinate to the UART receiver block.
+  
+  - rcv_block.sv: Core UART receiver, coordinating start/stop bit detection, data shifting, and error checking.
+  
+  - rcu.sv: Receiver Control Unit (RCU) with a finite state machine to manage the UART receiving process.
+  
+  - timer.sv: Generates timing signals (shift strobe, packet done) based on configurable bit periods and data sizes.
+  
+  - flex_counter.sv: Parameterized counter for timing and bit counting.
+  
+  - flex_sr.sv: Parameterized shift register for serial-to-parallel data conversion.
+  
+  - sr_9bit.sv: 9-bit shift register tailored for UART data with configurable data sizes.
+
+## Design Features
+
+- APB Interface: Supports read/write operations for config registers (bit period, data size) and status registers (error, data ready).
+
+- Configurable UART: Supports 5, 7, or 8 bit data packets with a programmable bit period.
+
+- Error detection: Detects framing errors(invalid stop bit) and overrun errors (new data before reading previous).
+  
+## Module Overview
+- apb_subordinate: Manages APB transactions, mapping addresses to registers:
+
+  paddr 0: Data status (data_ready).
+  
+  paddr 1: Error status (overrun_error, framing_error).
+  
+  paddr 2-3: Bit period (14-bit, split across two registers).
+  
+  paddr 4: Data size (4-bit, supports 5, 7, or 8 bits).
+  
+  paddr 6: Received data buffer.
+
+- rcv_block: Orchestrates UART reception with submodules:
+
+    - rcu: FSM controlling start bit detection, data shifting, and stop bit checking.
+    
+    - sr_9bit: Shifts serial data into a 9-bit register, adjusting for data size.
+    
+    - timer: Generates timing signals using two flex_counter instances.
+    
+    - rx_data_buff: Buffers received data and tracks overrun errors.
+    
+    - start_bit_det & stop_bit_chk: Detect start/stop bits and flag framing errors.
+    
+    - flex_counter & flex_sr: Parameterized modules for reusable counting and shifting logic.
+ 
+## Notes 
+- The design assumes a single stop bit and no parity bit.
+- The bit_period register is 14 bits, allowing for values of 0 to 16,384.
+- The data_size register supports 5, 7, or 8-bit data; other values default to 8 bits.
+- The psaterr signal is asserted for invalid APB write addresses.
