@@ -1,0 +1,16 @@
+CAPI=2:
+name: "u337mg054:ece337:flex_sr:1.0.0"
+description: "Parameterized shift register"
+
+filesets:
+    rtl:
+        files:
+            - "source/flex_sr.sv"
+        file_type: systemVerilogSource
+
+targets:
+    default:
+        filesets:
+            - rtl
+        toplevel: flex_sr
+
