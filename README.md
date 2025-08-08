@@ -61,6 +61,6 @@ The project includes the following SystemVerilog modules:
  
 ## Notes 
 - The design assumes a single stop bit and no parity bit.
-- The bit_period register is 14 bits, allowing for values of 0 to 16,384.
+- The bit_period register is 14 bits, allowing for values of 10 to 16,384, where 10 is the reset value.
 - The data_size register supports 5, 7, or 8-bit data; other values default to 8 bits.
 - The psaterr signal is asserted for invalid APB write addresses.
