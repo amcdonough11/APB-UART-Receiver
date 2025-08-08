@@ -34,10 +34,11 @@ The project includes the following SystemVerilog modules:
   
 ## Module Overview
 - apb_subordinate: Manages APB transactions, mapping addresses to registers:
+  
 | paddr | Size |  Access  | Description                                                      |
 |-------|------|----------|------------------------------------------------------------------|
-|   0   |  1   |Read Only |Data Status Reg: 0 -> None, 1 -> New data                         |  
-|   1   |  1   |Read Only |Error Status Reg: 0 -> None, 1 -> Framing, 2 -> Overrun, 3 -> Both|
+|   0   |  1   |Read Only |Data Status Reg: <br> 0 -> No new data <br>    1 -> New data                         |  
+|   1   |  1   |Read Only |Error Status Reg: <br> 0 -> No Error <br> 1 -> Framing  <br> 2 -> Overrun  <br> 3 -> Both|
 |   2   |  2   |Read/Write|Bit period Config Reg                                             |
 |   4   |  1   |Read/Write|Data Size Config Reg                                              |
 |   6   |  1   |Read Only |Data Buffer                                                       |
