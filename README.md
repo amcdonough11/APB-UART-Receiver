@@ -34,16 +34,13 @@ The project includes the following SystemVerilog modules:
   
 ## Module Overview
 - apb_subordinate: Manages APB transactions, mapping addresses to registers:
-
-  paddr 0: Data status (data_ready).
-  
-  paddr 1: Error status (overrun_error, framing_error).
-  
-  paddr 2-3: Bit period (14-bit, split across two registers).
-  
-  paddr 4: Data size (4-bit, supports 5, 7, or 8 bits).
-  
-  paddr 6: Received data buffer.
+| paddr | Size |  Access  | Description                                                      |
+|-------|------|----------|------------------------------------------------------------------|
+|   0   |  1   |Read Only |Data Status Reg: 0 -> None, 1 -> New data                         |  
+|   1   |  1   |Read Only |Error Status Reg: 0 -> None, 1 -> Framing, 2 -> Overrun, 3 -> Both|
+|   2   |  2   |Read/Write|Bit period Config Reg                                             |
+|   4   |  1   |Read/Write|Data Size Config Reg                                              |
+|   6   |  1   |Read Only |Data Buffer                                                       |
 
 - rcv_block: Orchestrates UART reception with submodules:
 
