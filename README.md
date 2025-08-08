@@ -1,6 +1,8 @@
 # APB-UART-Receiver
 Design of an APB UART Receiver supporting variable data sizes (5, 7, or 8 bits) and programmable bit periods
 
+<img width="793" height="373" alt="image" src="https://github.com/user-attachments/assets/feae8df0-3d2c-403b-9355-2ce1b1063fd1" />
+
 ## Overview 
 The APB UART receiver integrates an APB Subordinate module with a UART receiver block to process serial data, configure registers, and report status to the master. It supports data sizes of 5, 7, or 8 bit and programmable bit periods. 
 
@@ -37,11 +39,11 @@ The project includes the following SystemVerilog modules:
   
 | paddr | Size |  Access  | Description                                                      |
 |-------|------|----------|------------------------------------------------------------------|
-|   0   |  1   |Read Only |Data Status Reg: <br> 0 -> No new data <br>    1 -> New data                         |  
-|   1   |  1   |Read Only |Error Status Reg: <br> 0 -> No Error <br> 1 -> Framing  <br> 2 -> Overrun  <br> 3 -> Both|
-|   2   |  2   |Read/Write|Bit period Config Reg                                             |
-|   4   |  1   |Read/Write|Data Size Config Reg                                              |
-|   6   |  1   |Read Only |Data Buffer                                                       |
+|   0x0   |  1   |Read Only |Data Status Reg: <br> 0 -> No new data <br>    1 -> New data                         |  
+|   0x1   |  1   |Read Only |Error Status Reg: <br> 0 -> No Error <br> 1 -> Framing  <br> 2 -> Overrun  <br> 3 -> Both|
+|   0x2   |  2   |Read/Write|Bit period Config Reg                                             |
+|   0x4   |  1   |Read/Write|Data Size Config Reg                                              |
+|   0x6   |  1   |Read Only |Data Buffer                                                       |
 
 - rcv_block: Orchestrates UART reception with submodules:
 
