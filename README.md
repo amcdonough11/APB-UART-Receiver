@@ -45,7 +45,7 @@ The project includes the following SystemVerilog modules:
 |   0x4   |  1   |Read/Write|Data Size Config Reg                                              |
 |   0x6   |  1   |Read Only |Data Buffer                                                       |
 
-- rcv_block: Orchestrates UART reception with submodules:
+- rcv_block: Top-Level UART reception with submodules:
 
     - rcu: FSM controlling start bit detection, data shifting, and stop bit checking.
     
