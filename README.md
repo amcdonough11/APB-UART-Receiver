@@ -46,6 +46,8 @@ The project includes the following SystemVerilog modules:
 |   0x6   |  1   |Read Only |Data Buffer                                                       |
 
 - rcv_block: Top-Level UART reception with submodules:
+  
+<img width="512" height="499" alt="image" src="https://github.com/user-attachments/assets/eceef10f-3f1c-42d2-ad0a-98171cd8f372" />
 
     - rcu: FSM controlling start bit detection, data shifting, and stop bit checking.
     
@@ -55,7 +57,7 @@ The project includes the following SystemVerilog modules:
     
     - rx_data_buff: Buffers received data and tracks overrun errors.
     
-    - start_bit_det & stop_bit_chk: Detect start/stop bits and flag framing errors.
+    - start_bit_det & stop_bit_chk: Detect start/stop bits and flag framing errors. 
     
     - flex_counter & flex_sr: Parameterized modules for reusable counting and shifting logic.
  
