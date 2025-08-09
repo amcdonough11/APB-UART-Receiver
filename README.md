@@ -1,7 +1,7 @@
 # APB-UART-Receiver
 Design of an APB UART Receiver supporting variable data sizes (5, 7, or 8 bits) and programmable bit periods
 
-<img width="793" height="373" alt="image" src="https://github.com/user-attachments/assets/feae8df0-3d2c-403b-9355-2ce1b1063fd1" />
+<img width="1200" height="566" alt="image" src="https://github.com/user-attachments/assets/feae8df0-3d2c-403b-9355-2ce1b1063fd1" />
 
 ## Overview 
 The APB UART receiver integrates an APB Subordinate module with a UART receiver block to process serial data, configure registers, and report status to the master. It supports data sizes of 5, 7, or 8 bit and programmable bit periods. 
@@ -47,8 +47,6 @@ The project includes the following SystemVerilog modules:
 
 - rcv_block: Top-Level UART reception with submodules:
   
-<img width="512" height="499" alt="image" src="https://github.com/user-attachments/assets/eceef10f-3f1c-42d2-ad0a-98171cd8f372" />
-
     - rcu: FSM controlling start bit detection, data shifting, and stop bit checking.
     
     - sr_9bit: Shifts serial data into a 9-bit register, adjusting for data size.
@@ -60,6 +58,14 @@ The project includes the following SystemVerilog modules:
     - start_bit_det & stop_bit_chk: Detect start/stop bits and flag framing errors. 
     
     - flex_counter & flex_sr: Parameterized modules for reusable counting and shifting logic.
+
+<img width="750" height="750" alt="image" src="https://github.com/user-attachments/assets/eceef10f-3f1c-42d2-ad0a-98171cd8f372" />
+
+*RCV_block Module Diagram*
+
+![std_rcu](https://github.com/user-attachments/assets/d3078c0c-589e-4bc1-ba53-9cf6c2016098)
+
+*RCU State Transition Diagram*
  
 ## Notes 
 - The design assumes a single stop bit and no parity bit.
