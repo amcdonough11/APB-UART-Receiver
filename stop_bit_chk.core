@@ -1,0 +1,32 @@
+CAPI=2:
+name: "aidan:APB_UART:stop_bit_chk:1.0.0"
+description: ""
+
+filesets:
+    rtl:
+        files:
+            - "source/stop_bit_chk.sv"
+        file_type: systemVerilogSource
+
+    synth:
+        depend:
+            - "ece337:tech:AMI_05_LIB"
+            - "aidan:APB_UART:stop_bit_chk_syn"
+
+    tb:
+        files:
+            - "testbench/tb_stop_bit_chk.sv"
+            - "waves/stop_bit_chk.do": { file_type: user }
+            - "waves/stop_bit_chk.gtkw": { file_type: user }
+        file_type: systemVerilogSource
+
+
+    synfiles:
+        depend:
+            - "aidan:APB_UART:synfiles"
+
+targets:
+    default: &default
+        filesets:
+            - rtl
+        toplevel: stop_bit_chk

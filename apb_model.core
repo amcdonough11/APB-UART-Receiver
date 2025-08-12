@@ -1,0 +1,32 @@
+CAPI=2:
+name: "aidan:APB_UART:apb_model:1.0.0"
+description: ""
+
+filesets:
+    rtl:
+        files:
+            - "source/apb_model.sv"
+        file_type: systemVerilogSource
+
+    synth:
+        depend:
+            - "ece337:tech:AMI_05_LIB"
+            - "aidan:APB_UART:apb_model_syn"
+
+    tb:
+        files:
+            - "testbench/tb_apb_model.sv"
+            - "waves/apb_model.do": { file_type: user }
+            - "waves/apb_model.gtkw": { file_type: user }
+        file_type: systemVerilogSource
+
+
+    synfiles:
+        depend:
+            - "aidan:APB_UART:synfiles"
+
+targets:
+    default: &default
+        filesets:
+            - rtl
+        toplevel: apb_model

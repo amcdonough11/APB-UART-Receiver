@@ -1,0 +1,58 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Mon Aug 11 23:52:54 2025
+[*]
+[dumpfile] "/home/aidan/fusesoc_env/build/aidan_APB_UART_apb_uart_rx_1.0.0/sim-verilator/sim.vcd"
+[dumpfile_mtime] "Mon Aug 11 23:13:06 2025"
+[dumpfile_size] 142150
+[savefile] "/home/aidan/fusesoc_env/APB_UART_Receiver/waves/apb_uart_rx.gtkw"
+[timestart] 0
+[size] 2256 1385
+[pos] -1 -1
+*-18.000000 70000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.tb_apb_uart_rx.
+[treeopen] TOP.tb_apb_uart_rx.DUT.
+[treeopen] TOP.tb_apb_uart_rx.DUT.rcv.
+[treeopen] TOP.tb_apb_uart_rx.DUT.rcv.sr0.
+[treeopen] TOP.tb_apb_uart_rx.DUT.rcv.t0.
+[sst_width] 297
+[signals_width] 182
+[sst_expanded] 1
+[sst_vpaned_height] 430
+@28
+TOP.tb_apb_uart_rx.DUT.clk
+TOP.tb_apb_uart_rx.DUT.n_rst
+TOP.tb_apb_uart_rx.DUT.psel
+TOP.tb_apb_uart_rx.DUT.penable
+TOP.tb_apb_uart_rx.DUT.paddr[2:0]
+@22
+TOP.tb_apb_uart_rx.DUT.prdata[7:0]
+@28
+TOP.tb_apb_uart_rx.DUT.pwrite
+@22
+TOP.tb_apb_uart_rx.DUT.pwdata[7:0]
+@28
+TOP.tb_apb_uart_rx.DUT.psaterr
+TOP.tb_apb_uart_rx.DUT.overrun_error
+TOP.tb_apb_uart_rx.DUT.framing_error
+TOP.tb_apb_uart_rx.DUT.data_read
+TOP.tb_apb_uart_rx.DUT.data_ready
+TOP.tb_apb_uart_rx.DUT.rx_data[7:0]
+TOP.tb_apb_uart_rx.DUT.serial_in
+@22
+TOP.tb_apb_uart_rx.DUT.data_size[3:0]
+TOP.tb_apb_uart_rx.DUT.bit_period[13:0]
+@28
+TOP.tb_apb_uart_rx.DUT.rcv.new_packet_detected
+@24
+TOP.tb_apb_uart_rx.DUT.rcv.rcu0.state[2:0]
+@28
+TOP.tb_apb_uart_rx.DUT.rcv.shift_strobe
+@22
+TOP.tb_apb_uart_rx.DUT.rcv.t0.bit_counter.count_out[3:0]
+TOP.tb_apb_uart_rx.DUT.rcv.t0.clock_counter.count_out[13:0]
+@29
+TOP.tb_apb_uart_rx.DUT.rcv.t0.packet_done
+[pattern_trace] 1
+[pattern_trace] 0

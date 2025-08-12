@@ -1,0 +1,94 @@
+CAPI=2:
+name: "aidan:APB_UART:sr_9bit:1.0.0"
+description: ""
+
+filesets:
+    rtl:
+        files:
+            - "source/sr_9bit.sv"
+        file_type: systemVerilogSource
+        depend:
+            - "aidan:APB_UART:flex_sr:1.0.0"
+
+    synth:
+        depend:
+            - "ece337:tech:AMI_05_LIB"
+            - "aidan:APB_UART:sr_9bit_syn"
+
+    tb:
+        files:
+            - "testbench/tb_sr_9bit.sv"
+            - "waves/sr_9bit.do": { file_type: user }
+            - "waves/sr_9bit.gtkw": { file_type: user }
+        file_type: systemVerilogSource
+
+    synfiles:
+        depend:
+            - "aidan:APB_UART:synfiles"
+
+targets:
+    default: &default
+        filesets:
+            - rtl
+        toplevel: sr_9bit
+
+    sim: &sim
+        <<: *default
+        default_tool: verilator
+        filesets_append:
+            - tb
+        toplevel: tb_sr_9bit
+        tools:
+            modelsim:
+                vsim_options:
+                    - -vopt
+                    - -voptargs='+acc'
+                    - -t ps
+                    - -do waves/sr_9bit.do
+                    - -onfinish stop
+                    - -do "set PrefSource(OpenOnFinish) 0 ; set PrefMain(LinePrefix) \"\" ; set PrefMain(colorizeTranscript) 1"
+                    - -coverage
+                vlog_options:
+                    - +cover
+            verilator:
+                verilator_options:
+                    - --cc
+                    - --trace
+                    - --main
+                    - --timing
+                    - --coverage
+                make_options:
+                    - -j
+
+    lint:
+        <<: *default
+        default_tool: verilator
+        filesets_append:
+            - tb
+        tools:
+            verilator:
+                mode: lint-only
+                verilator_options:
+                    - --timing
+                    - -Wall
+
+    syn:
+        <<: *default
+        filesets_append:
+            - synfiles
+        default_tool: design_compiler
+        toplevel: sr_9bit
+        tools:
+            design_compiler:
+                script_dir: "src/u337mg054_ece337_synfiles_0"
+                dc_script: "synth.tcl"
+                report_dir: "reports"
+                target_library: "/home/ecegrid/a/ece337/summer24-refactor/tech/ami05/osu05_stdcells.db"
+                libs: "/home/ecegrid/a/ece337/summer24-refactor/tech/ami05/osu05_stdcells.db dw_foundation.sldb"
+
+    syn_sim:
+        <<: *sim
+        filesets:
+            - synth
+            - tb
+
