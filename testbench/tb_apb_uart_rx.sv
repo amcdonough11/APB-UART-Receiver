@@ -498,6 +498,30 @@ module tb_apb_uart_rx ();
         seven_bit_per_20_run_test_sequence(14'd20, 4'd7, med_test_data1);
         #1000ns;
 
+        /*Test 9: Overrun Error*/
+        test_name = "Overrun Error";
+        configure_design(14'd10, 4'd8);
+
+        streaming(8'b10101010);
+
+        enqueue_transaction(0,1,4,'0,0);
+        execute_transactions(12);
+
+        streaming(8'b11001100);
+
+        read(6);
+
+        /*Test 10: Framing Error*/
+        test_name = "Framing Error";
+        configure_design(14'd10, 4'd5);
+
+        streaming(8'b00000000);
+
+        enqueue_transaction(0,1,4,'0,0);
+        execute_transactions(12);
+
+        
+        
         $finish;
     end
 endmodule
