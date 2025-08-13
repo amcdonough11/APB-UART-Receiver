@@ -149,8 +149,11 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 ## Synthesis Results
 
 **Tool**: Synopsys Design Compiler
+
 **Target Process**: osu05_stdcells (0.5 µm)  
+
 **Target Clock**: 100 MHz (10 ns period)  
+
 **Operating Conditions**: Typical corner, 5 V
 
 | Metric         | Result              | Notes |
@@ -159,4 +162,5 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 | **Max Delay**  | 7.42 ns              | Critical path: `bit_period_reg[11] → rollover_flag_reg` |
 | **Total Area** | 269,577 units        | From standard cell area report |
 | **Power**      | 21.344 mW            | Switching + Internal + Leakage |
+
 
