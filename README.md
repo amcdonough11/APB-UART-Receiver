@@ -146,16 +146,17 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 - UART transaction tries to send 8 bit (8'b00000000) over `serial_in`
 - The `packet_done` signal triggers on a low, indicating a framing error
 
-## Quick Start
+## Synthesis Results
 
-### Prerequisites
-- [FuseSoC](https://fusesoc.readthedocs.io/)
-- Verilator or Icarus Verilog
-- GTKWave (for waveform viewing)
+**Tool**: Synopsys Design Compiler
+**Target Process**: osu05_stdcells (0.5 µm)  
+**Target Clock**: 100 MHz (10 ns period)  
+**Operating Conditions**: Typical corner, 5 V
 
-### Run Simulation
-```bash
-# Install dependencies
-fusesoc library add APB_UART .
-make apb_uart_rx_gtkwaves
-```
+| Metric         | Result              | Notes |
+|----------------|---------------------|-------|
+| **Timing**     | Slack = **+2.49 ns** | Meets timing at 100 MHz |
+| **Max Delay**  | 7.42 ns              | Critical path: `bit_period_reg[11] → rollover_flag_reg` |
+| **Total Area** | 269,577 units        | From standard cell area report |
+| **Power**      | 21.344 mW            | Switching + Internal + Leakage |
+
