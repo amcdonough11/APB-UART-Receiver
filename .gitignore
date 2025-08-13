@@ -1,0 +1,12 @@
+# build trees
+tmp/
+out/
+**/*-modelsim/
+**/work/
+
+# waves & sim artifacts
+*.vcd
+*.wlf
+transcript
+vsim.wlf
+modelsim.ini
