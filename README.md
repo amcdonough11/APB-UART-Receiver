@@ -55,7 +55,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 
 ## Module Overview
 
-- **`apb_subordinate.sv`** — APB read/write handling; maps addresses to config/status; asserts `pslverr` on invalid writes  
+- **`apb_subordinate.sv`** — APB read/write handling; maps addresses to config/status; asserts `psaterr` on invalid writes  
 - **`apb_uart_rx.sv`** — Top-level tying APB to the UART receive path  
 - **`rcv_block.sv`** — Start/stop detection, serial-to-parallel, error logic  
 - **`rcu.sv`** — FSM: see state transition diagram below  
@@ -161,6 +161,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 | **Max Delay**  | 7.42 ns              | Critical path: `bit_period_reg[11] → rollover_flag_reg` |
 | **Total Area** | 269,577 units        | From standard cell area report |
 | **Power**      | 21.344 mW            | Switching + Internal + Leakage |
+
 
 
 
