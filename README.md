@@ -19,7 +19,6 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 | **Programmable Bit Period** | 14-bit register (10 .. 16384 clk cycles), reset = 10 |
 | **Error Detection** | Overrun & framing error flags |
 | **Status & Control Registers** | APB-readable/writable register map |
-| **FuseSoC Support** | Ready for dependency-based build and simulation |
 
 ## What I Did
 - Designed and implemented all RTL modules in SystemVerilog **except** `apb_model.sv` (provided as a bus functional model for simulation).
@@ -29,7 +28,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
   - Framing Error conditions
   - Overrun Error conditions
   - Variable bit period configurations
--Synthesized using Design Compiler 
+- Synthesized using Design Compiler 
 
 ## Repo Structure 
 ```
@@ -162,6 +161,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 | **Max Delay**  | 7.42 ns              | Critical path: `bit_period_reg[11] → rollover_flag_reg` |
 | **Total Area** | 269,577 units        | From standard cell area report |
 | **Power**      | 21.344 mW            | Switching + Internal + Leakage |
+
 
 
 
