@@ -169,3 +169,4 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 
 
 
+
