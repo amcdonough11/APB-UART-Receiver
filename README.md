@@ -85,7 +85,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 |   0x4   |  1   |Read/Write|**Data Size Config Reg**  <br> allowed: <br>`5` bit, <br> `7` bit, <br> `8` bit (others default to 8)|
 |   0x6   |  1   |Read Only |**Data Buffer** — received byte                                                   |
 
-- **Invalid write addresses** assert **`PSATERR`** (`PSATERR` → standardized to `pslverr` in docs).
+- **Invalid write addresses** assert **`PSATERR`** (aka `pslverr`).
  
 ---
 ## APB Bus Signals
@@ -161,6 +161,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 | **Max Delay**  | 7.42 ns              | Critical path: `bit_period_reg[11] → rollover_flag_reg` |
 | **Total Area** | 269,577 units        | From standard cell area report |
 | **Power**      | 21.344 mW            | Switching + Internal + Leakage |
+
 
 
 
