@@ -28,7 +28,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
   - Framing Error conditions
   - Overrun Error conditions
   - Variable bit period configurations
-- Synthesized using Design Compiler 
+- **Synthesized** using Design Compiler 
 
 ## Repo Structure 
 ```
@@ -161,6 +161,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 | **Max Delay**  | 7.42 ns              | Critical path: `bit_period_reg[11] → rollover_flag_reg` |
 | **Total Area** | 269,577 units        | From standard cell area report |
 | **Power**      | 21.344 mW            | Switching + Internal + Leakage |
+
 
 
 
