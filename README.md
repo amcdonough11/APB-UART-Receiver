@@ -1,5 +1,5 @@
 # APB-UART-Receiver
-An **AMBA APB UART receiver** in SystemVerilog with **configurable data size**, **programmable bit period**, and **error detection**. Packaged for easy reuse with **FuseSoC** and set up for one-command simulation + waves.
+An **AMBA APB UART receiver** in SystemVerilog with **configurable data size**, **programmable bit period**, and **error detection**. 
 
 ---
 ## Summary 
@@ -162,5 +162,6 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 | **Max Delay**  | 7.42 ns              | Critical path: `bit_period_reg[11] → rollover_flag_reg` |
 | **Total Area** | 269,577 units        | From standard cell area report |
 | **Power**      | 21.344 mW            | Switching + Internal + Leakage |
+
 
 
