@@ -127,7 +127,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 - `new_packet_detected` triggered by falling edge of serial_in
 - `shift strobe` samples serial_in in the middle of the sample
 - `packet_done` triggered after 8 samples taken 
-- 'rx_data' becomes signal receieved from UART and `data_ready` goes high
+- `rx_data` becomes signal receieved from UART and `data_ready` goes high
 - APB read of data status reg followed by APB read of data buffer
 - `data_read` triggered by read of data buffer and`data_ready` falls to low
 
@@ -161,6 +161,7 @@ The design integrates an APB subordinate (slave) with a UART receiver block. Sof
 | **Max Delay**  | 7.42 ns              | Critical path: `bit_period_reg[11] → rollover_flag_reg` |
 | **Total Area** | 269,577 units        | From standard cell area report |
 | **Power**      | 21.344 mW            | Switching + Internal + Leakage |
+
 
 
 
